@@ -18,8 +18,6 @@ values:
     rootgroup: root
     service:
       name: crond
-    subcomponent:
-      config: /etc/wireguard-subcomponent-formula.conf
     tofs:
       files_switch:
       - any/path/can/be/used/here
@@ -31,6 +29,4 @@ values:
       source_files:
         wireguard-config-file-file-managed:
         - example.tmpl.jinja
-        wireguard-subcomponent-config-file-file-managed:
-        - subcomponent-example.tmpl.jinja
     winner: pillar

@@ -125,28 +125,6 @@ dependency on ``wireguard.service.clean`` via include list.
 This state will remove the wireguard package and has a depency on
 ``wireguard.config.clean`` via include list.
 
-``wireguard.subcomponent``
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-*Meta-state (This is a state that includes other states)*.
-
-This state installs a subcomponent configuration file before
-configuring and starting the wireguard service.
-
-``wireguard.subcomponent.config``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will configure the wireguard subcomponent and has a
-dependency on ``wireguard.config`` via include list.
-
-``wireguard.subcomponent.config.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will remove the configuration of the wireguard subcomponent
-and reload the wireguard service by a dependency on
-``wireguard.service.running`` via include list and ``watch_in``
-requisite.
-
 Testing
 -------
 

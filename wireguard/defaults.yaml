@@ -8,8 +8,6 @@ wireguard:
   config: '/etc/wireguard'
   service:
     name: wireguard
-  subcomponent:
-    config: '/etc/wireguard-subcomponent-formula.conf'
   # Just here for testing
   added_in_defaults: defaults_value
   winner: defaults

@@ -26,9 +26,7 @@ control 'wireguard configuration' do
       should include(
         '"tofs": {"files_switch": ["any/path/can/be/used/here", "id", '\
         '"roles", "osfinger", "os", "os_family"], "source_files": '\
-        '{"wireguard-config-file-file-managed": ["example.tmpl.jinja"], '\
-        '"wireguard-subcomponent-config-file-file-managed": '\
-        '["subcomponent-example.tmpl.jinja"]}'
+        '{"wireguard-config-file-file-managed": ["example.tmpl.jinja"]}'
       )
       # rubocop:enable Layout/LineLength
       # rubocop:enable Lint/RedundantCopDisableDirective
