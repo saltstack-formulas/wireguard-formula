@@ -12,13 +12,13 @@
 ---
 Debian:
   pkg:
-    name: wireguard-debian
-  config: /etc/wireguard.d/custom.conf
+    name: wireguard
+  service:
+    name: wg-quick
 
 RedHat:
   pkg:
     name: wireguard-redhat
-  config: /etc/wireguard.conf
 
 Suse:
   pkg:
@@ -38,6 +38,7 @@ Alpine: {}
 
 FreeBSD:
   rootgroup: wheel
+  config: '/usr/local/etc/wireguard'
 
 OpenBSD:
   rootgroup: wheel

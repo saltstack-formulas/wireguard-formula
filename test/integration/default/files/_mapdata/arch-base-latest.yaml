@@ -7,7 +7,7 @@ values:
     added_in_lookup: lookup_value
     added_in_pillar: pillar_value
     arch: amd64
-    config: /etc/template-formula.conf
+    config: /etc/wireguard
     lookup:
       added_in_lookup: lookup_value
       master: template-master

@@ -96,25 +96,25 @@ jobs:
     #       Ref: https://github.com/saltstack-formulas/template-formula/issues/121
     - env: INSTANCE=default-debian-10-tiamat-py3
     # - env: INSTANCE=default-debian-9-tiamat-py3
-    - env: INSTANCE=default-ubuntu-2004-tiamat-py3
+    # - env: INSTANCE=default-ubuntu-2004-tiamat-py3
     # - env: INSTANCE=default-ubuntu-1804-tiamat-py3
     # - env: INSTANCE=default-ubuntu-1604-tiamat-py3
-    - env: INSTANCE=default-centos-8-tiamat-py3
+    # - env: INSTANCE=default-centos-8-tiamat-py3
     # - env: INSTANCE=default-centos-7-tiamat-py3
-    - env: INSTANCE=default-amazonlinux-2-tiamat-py3
-    - env: INSTANCE=default-oraclelinux-8-tiamat-py3
+    # - env: INSTANCE=default-amazonlinux-2-tiamat-py3
+    # - env: INSTANCE=default-oraclelinux-8-tiamat-py3
     # - env: INSTANCE=default-oraclelinux-7-tiamat-py3
-    # - env: INSTANCE=default-debian-10-master-py3
+    - env: INSTANCE=default-debian-10-master-py3
     # - env: INSTANCE=default-ubuntu-2004-master-py3
     # - env: INSTANCE=default-ubuntu-1804-master-py3
     # - env: INSTANCE=default-centos-8-master-py3
-    - env: INSTANCE=default-fedora-32-master-py3
+    # - env: INSTANCE=default-fedora-32-master-py3
     # - env: INSTANCE=default-fedora-31-master-py3
-    - env: INSTANCE=default-opensuse-leap-152-master-py3
+    # - env: INSTANCE=default-opensuse-leap-152-master-py3
     # - env: INSTANCE=default-amazonlinux-2-master-py3
-    - env: INSTANCE=gentoo-gentoo-stage3-latest-master-py3
-    - env: INSTANCE=gentoo-gentoo-stage3-systemd-master-py3
-    # - env: INSTANCE=default-debian-10-3001-py3
+    # - env: INSTANCE=gentoo-gentoo-stage3-latest-master-py3
+    # - env: INSTANCE=gentoo-gentoo-stage3-systemd-master-py3
+    - env: INSTANCE=default-debian-10-3001-py3
     # - env: INSTANCE=default-debian-9-3001-py3
     # - env: INSTANCE=default-ubuntu-2004-3001-py3
     # - env: INSTANCE=default-ubuntu-1804-3001-py3
@@ -128,7 +128,7 @@ jobs:
     # - env: INSTANCE=default-oraclelinux-7-3001-py3
     # - env: INSTANCE=gentoo-gentoo-stage3-latest-3001-py3
     # - env: INSTANCE=gentoo-gentoo-stage3-systemd-3001-py3
-    # - env: INSTANCE=default-debian-10-3000-3-py3
+    - env: INSTANCE=default-debian-10-3000-3-py3
     # - env: INSTANCE=default-debian-9-3000-3-py3
     # - env: INSTANCE=default-ubuntu-1804-3000-3-py3
     # - env: INSTANCE=default-centos-8-3000-3-py3
@@ -140,9 +140,9 @@ jobs:
     # - env: INSTANCE=gentoo-gentoo-stage3-systemd-3000-3-py3
     # - env: INSTANCE=default-ubuntu-1804-3000-3-py2
     # - env: INSTANCE=default-ubuntu-1604-3000-3-py2
-    - env: INSTANCE=default-arch-base-latest-3000-3-py2
+    # - env: INSTANCE=default-arch-base-latest-3000-3-py2
     # - env: INSTANCE=upstart-centos-6-2019-2-py2
-    - env: INSTANCE=upstart-amazonlinux-1-2019-2-py2
+    # - env: INSTANCE=upstart-amazonlinux-1-2019-2-py2
 
     ## Define the release stage that runs `semantic-release`
     - stage: 'release'

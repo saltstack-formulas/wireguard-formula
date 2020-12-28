@@ -7,17 +7,30 @@ values:
     added_in_lookup: lookup_value
     added_in_pillar: pillar_value
     arch: amd64
-    config: /etc/template-formula.conf
+    config: /etc/wireguard
+    interfaces:
+      wg0:
+        Interface:
+          ListenPort: 51820
+        Peers:
+          minion_id1:
+            AllowedIPs:
+              - 10.0.45.0/24
+              - 10.0.47.0/24
+            Endpoint: 10.0.34.4:51820
+            PublicKey: FSvVqj2s1FZqsSIvPLrE1RRTgbaPLbfG87P36F21M1g=
+          minion_id2:
+            AllowedIPs: 0.0.0.0/0
+            Endpoint: 10.0.0.1:51820
+            PublicKey: mine:minion_id2:wg0
     lookup:
       added_in_lookup: lookup_value
-      master: template-master
       winner: lookup
-    master: template-master
     pkg:
-      name: bash
+      name: wireguard
     rootgroup: root
     service:
-      name: systemd-journald
+      name: wg-quick
     tofs:
       files_switch:
       - any/path/can/be/used/here
@@ -27,6 +40,6 @@ values:
       - os
       - os_family
       source_files:
-        wireguard-config-file-file-managed:
-        - example.tmpl.jinja
+        wireguard-config-file-interface-wg0-config:
+          - wireguard.conf.jinja
     winner: pillar

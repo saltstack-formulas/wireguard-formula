@@ -1,0 +1,54 @@
+########################################################################
+# File managed by Salt at <{{ source }}>.
+# Your changes will be overwritten.
+########################################################################
+
+[Interface]
+{%- for key, value in interface_config['Interface'].items() %}
+{{ key }} = {{ value }}
+{%- endfor %}
+
+{%- for peer_name, peer in interface_config.get('Peers', {}).items() %}
+{#-   # Don't peer with ourself (by matching peer name) #}
+{%-   if peer_name == grains['id'] %}
+{%-     continue %}
+{%-   endif %}
+{%-   set endpoint = peer.get('Endpoint', False) %}
+{%-   if endpoint %}
+{%-     set address = endpoint.split(':')[0] %}
+{#-     # Don't peer with ourself (by matching endpoint address) #}
+{%-     if address in grains['ipv4'] or address in grains['ipv6'] %}
+{%-       continue %}
+{%-     endif %}
+{%-   endif %}
+{%-   set pubkey = peer.get('PublicKey', '') %}
+{#-   # mine:node_id:interface #}
+{%-   set parts = pubkey.split(':') %}
+{%-   if parts|length() == 3 and parts[0] == 'mine' %}
+{#-     # ignore your own pubkeys #}
+{%-     if parts[1] == grains['id'] %}
+{%-       continue %}
+{%-     endif %}
+{%-     set mined_node_pubkeys = salt['mine.get'](parts[1], 'public_wireguard_keys') %}
+{%-     if mined_node_pubkeys %}
+{%-       for line in mined_node_pubkeys.splitlines() %}
+{#-         # 'interface public_key' #}
+{%-         set key_parts = line.split(' ') %}
+{%-         if parts[2] == key_parts[0] %}
+{%-           do peer.update({"PublicKey": key_parts[1]}) %}
+{%-         endif %}
+{%-       endfor %}
+{%-     else %}
+{%-       continue %}
+{%-     endif %}
+{%-   endif %}
+
+[Peer]
+# {{ peer_name }}
+{%-   for key, value in peer.items() %}
+{%-     if value|is_list %}
+{%-       set value = value|join(',') %}
+{%-     endif %}
+{{ key }} = {{ value }}
+{%-   endfor %}
+{%- endfor %}

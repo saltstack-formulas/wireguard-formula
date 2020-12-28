@@ -13,7 +13,7 @@ control 'wireguard service' do
     when 'centos-6', 'amazonlinux-1'
       'crond'
     else
-      'systemd-journald'
+      'wg-quick@wg0'
     end
 
   describe service(service_name) do
