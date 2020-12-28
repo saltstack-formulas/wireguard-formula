@@ -3,7 +3,7 @@
 # Prepare platform "finger"
 platform_finger = system.platform[:finger].split('.').first.to_s
 
-control 'TEMPLATE package' do
+control 'wireguard package' do
   title 'should be installed'
 
   # Overide by `platform_finger`

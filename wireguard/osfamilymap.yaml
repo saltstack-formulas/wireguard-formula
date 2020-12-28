@@ -12,25 +12,25 @@
 ---
 Debian:
   pkg:
-    name: TEMPLATE-debian
-  config: /etc/TEMPLATE.d/custom.conf
+    name: wireguard-debian
+  config: /etc/wireguard.d/custom.conf
 
 RedHat:
   pkg:
-    name: TEMPLATE-redhat
-  config: /etc/TEMPLATE.conf
+    name: wireguard-redhat
+  config: /etc/wireguard.conf
 
 Suse:
   pkg:
-    name: TEMPLATE-suse
+    name: wireguard-suse
 
 Gentoo:
   pkg:
-    name: TEMPLATE-gentoo
+    name: wireguard-gentoo
 
 Arch:
   pkg:
-    name: TEMPLATE-arch
+    name: wireguard-arch
   service:
     name: service-arch
 

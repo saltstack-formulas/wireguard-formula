@@ -194,7 +194,7 @@ provisioner:
   log_level: debug
   salt_install: none
   require_chef: false
-  formula: TEMPLATE
+  formula: wireguard
   salt_copy_filter:
     - .kitchen
     - .git
@@ -222,16 +222,16 @@ suites:
       state_top:
         base:
           '*':
-            - TEMPLATE._mapdata
-            - TEMPLATE
+            - wireguard._mapdata
+            - wireguard
       pillars:
         top.sls:
           base:
             '*':
-              - TEMPLATE
+              - wireguard
               - define_roles
       pillars_from_files:
-        TEMPLATE.sls: pillar.example
+        wireguard.sls: pillar.example
         define_roles.sls: test/salt/pillar/define_roles.sls
     verifier:
       inspec_tests:
@@ -244,16 +244,16 @@ suites:
       state_top:
         base:
           '*':
-            - TEMPLATE._mapdata
-            - TEMPLATE
+            - wireguard._mapdata
+            - wireguard
       pillars:
         top.sls:
           base:
             '*':
-              - TEMPLATE
+              - wireguard
               - define_roles
       pillars_from_files:
-        TEMPLATE.sls: test/salt/pillar/upstart.sls
+        wireguard.sls: test/salt/pillar/upstart.sls
         define_roles.sls: test/salt/pillar/define_roles.sls
     verifier:
       inspec_tests:
@@ -270,17 +270,17 @@ suites:
       state_top:
         base:
           '*':
-            - TEMPLATE._mapdata
-            - TEMPLATE
+            - wireguard._mapdata
+            - wireguard
       pillars:
         top.sls:
           base:
             '*':
-              - TEMPLATE
+              - wireguard
               - gentoo
               - define_roles
       pillars_from_files:
-        TEMPLATE.sls: pillar.example
+        wireguard.sls: pillar.example
         gentoo.sls: test/salt/pillar/gentoo.sls
         define_roles.sls: test/salt/pillar/define_roles.sls
     verifier:

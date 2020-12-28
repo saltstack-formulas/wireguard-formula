@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 ---
-TEMPLATE:
+wireguard:
   lookup:
     master: template-master
     # Just for testing purposes
@@ -45,9 +45,9 @@ TEMPLATE:
 
     # For testing purposes
     source_files:
-      TEMPLATE-config-file-file-managed:
+      wireguard-config-file-file-managed:
         - 'example.tmpl.jinja'
-      TEMPLATE-subcomponent-config-file-file-managed:
+      wireguard-subcomponent-config-file-file-managed:
         - 'subcomponent-example.tmpl.jinja'
 
   # Just for testing purposes

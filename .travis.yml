@@ -143,25 +143,6 @@ jobs:
     - env: INSTANCE=default-arch-base-latest-3000-3-py2
     # - env: INSTANCE=upstart-centos-6-2019-2-py2
     - env: INSTANCE=upstart-amazonlinux-1-2019-2-py2
-    # <REMOVEME
-
-    # Test the conversion of `template-formula` into another formula
-    # ready for development
-    - env: 'Conversion'
-      name: 'Test: bin/convert-formula.sh'
-      script:
-        - export CONVERTED=test-the-use_this_template-button
-        - git clone . tmp/"$CONVERTED"-formula
-        - cd tmp/"$CONVERTED"-formula
-        - pyenv global 3.8
-        - pip install pre-commit==2.7.1
-        - bin/install-hooks
-        - DEBUG=true bin/convert-formula.sh "$CONVERTED"
-        - '[ $(git rev-list HEAD --count) -eq 2 ]'
-        # Quick visual check that correct files have been updated
-        - git show --pretty="" --name-status
-        - bin/kitchen verify default-debian-10-tiamat-py3
-    # REMOVEME>
 
     ## Define the release stage that runs `semantic-release`
     - stage: 'release'
@@ -188,17 +169,3 @@ jobs:
         edge: true
         # Run `semantic-release`
         script: 'npx semantic-release@15.14'
-# <REMOVEME
-
-# Notification options: `always`, `never` or `change`
-notifications:
-  webhooks:
-    if: 'repo = saltstack-formulas/template-formula'
-    urls:
-      - https://saltstack-formulas.zulipchat.com/api/v1/external/travis?api_key=HsIq3o5QmLxdnVCKF9is0FUIpkpAY79P&stream=CI&topic=saltstack-formulas%2Ftemplate-formula&ignore_pull_requests=true
-    on_success: always  # default: always
-    on_failure: always  # default: always
-    on_start: always    # default: never
-    on_cancel: always   # default: always
-    on_error: always    # default: always
-# REMOVEME>

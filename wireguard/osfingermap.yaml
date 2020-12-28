@@ -17,7 +17,7 @@ Debian-8: {}
 
 # os: Ubuntu
 Ubuntu-18.04:
-  config: /etc/TEMPLATE.d/custom-ubuntu-18.04.conf
+  config: /etc/wireguard.d/custom-ubuntu-18.04.conf
 Ubuntu-16.04: {}
 
 # os: Fedora
@@ -29,8 +29,8 @@ CentOS Linux-8: {}
 CentOS Linux-7: {}
 CentOS-6:
   pkg:
-    name: TEMPLATE-centos-6
-  config: /etc/TEMPLATE.d/custom-centos-6.conf
+    name: wireguard-centos-6
+  config: /etc/wireguard.d/custom-centos-6.conf
 
 # os: Amazon
 Amazon Linux-2: {}

@@ -117,35 +117,6 @@ rubocop:
   script:
     # Alternative value to consider: `${CI_JOB_NAME}`
     - 'bin/kitchen verify "${DOCKER_ENV_CI_JOB_NAME}"'
-# <REMOVEME
-
-###############################################################################
-# Define `test_conversion` template
-###############################################################################
-.test_conversion:
-  stage: *stage_test
-  image: *image_dindrubybionic
-  services: *services_docker_dind
-  variables: *variables_bundler
-  cache: *cache_bundler
-  before_script:
-    - 'export CONVERTED=test-the-use_this_template-button'
-    - 'git clone . tmp/"${CONVERTED}"-formula'
-    - 'cd tmp/"${CONVERTED}"-formula'
-    # Install `pre-commit` hooks
-    - 'bin/install-hooks'
-    # Run the conversion script with debug output
-    - 'DEBUG=true bin/convert-formula.sh "${CONVERTED}"'
-    - '[ $(git rev-list HEAD --count) -eq 2 ]'
-    # Quick visual check that correct files have been updated
-    - 'git show --pretty="" --name-status'
-    # TODO: This should work from the env vars above automatically
-    - 'bundle config set path "${BUNDLE_CACHE_PATH}"'
-    - 'bundle config set without "${BUNDLE_WITHOUT}"'
-    - 'bundle install'
-  script:
-    - 'bin/kitchen verify default-debian-10-tiamat-py3'
-# REMOVEME>
 
 ###############################################################################
 # `test` stage: each instance below uses the `test` template above
@@ -153,20 +124,6 @@ rubocop:
 ## Define the rest of the matrix based on Kitchen testing
 # Make sure the instances listed below match up with
 # the `platforms` defined in `kitchen.yml`
-# <REMOVEME
-# NOTE: Please try to select up to six instances that add some meaningful
-#       testing of the formula's behaviour. If possible, try to refrain from
-#       the classical "chosing all the instances because I want to test on
-#       another/all distro/s" trap: it will just add time to the testing (see
-#       the discussion on #121).  As an example, the set chosen below covers
-#       the most used distros families, systemd and non-systemd and the latest
-#       three supported Saltstack versions with python2 and 3.
-#       As for `kitchen.yml`, that should still contain all of the platforms,
-#       to allow for comprehensive local testing
-#       Ref: https://github.com/saltstack-formulas/template-formula/issues/118
-#       Ref: https://github.com/saltstack-formulas/template-formula/issues/121
-test-formula-conversion: {extends: '.test_conversion'}
-# REMOVEME>
 default-debian-10-tiamat-py3: {extends: '.test_instance'}
 # default-debian-9-tiamat-py3: {extends: '.test_instance'}
 default-ubuntu-2004-tiamat-py3: {extends: '.test_instance'}

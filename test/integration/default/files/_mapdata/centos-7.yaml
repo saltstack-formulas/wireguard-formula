@@ -2,7 +2,7 @@
 # CentOS Linux-7
 ---
 values:
-  TEMPLATE:
+  wireguard:
     added_in_defaults: defaults_value
     added_in_lookup: lookup_value
     added_in_pillar: pillar_value
@@ -19,7 +19,7 @@ values:
     service:
       name: systemd-journald
     subcomponent:
-      config: /etc/TEMPLATE-subcomponent-formula.conf
+      config: /etc/wireguard-subcomponent-formula.conf
     tofs:
       files_switch:
       - any/path/can/be/used/here
@@ -29,8 +29,8 @@ values:
       - os
       - os_family
       source_files:
-        TEMPLATE-config-file-file-managed:
+        wireguard-config-file-file-managed:
         - example.tmpl.jinja
-        TEMPLATE-subcomponent-config-file-file-managed:
+        wireguard-subcomponent-config-file-file-managed:
         - subcomponent-example.tmpl.jinja
     winner: pillar

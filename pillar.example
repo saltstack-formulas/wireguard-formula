@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 ---
-TEMPLATE:
+wireguard:
   lookup:
     master: template-master
     # Just for testing purposes
@@ -33,7 +33,7 @@ TEMPLATE:
     # All aspects of path/file resolution are customisable using the options below.
     # This is unnecessary in most cases; there are sensible defaults.
     # Default path: salt://< path_prefix >/< dirs.files >/< dirs.default >
-    #         I.e.: salt://TEMPLATE/files/default
+    #         I.e.: salt://wireguard/files/default
     # path_prefix: template_alt
     # dirs:
     #   files: files_alt
@@ -41,15 +41,15 @@ TEMPLATE:
     # The entries under `source_files` are prepended to the default source files
     # given for the state
     # source_files:
-    #   TEMPLATE-config-file-file-managed:
+    #   wireguard-config-file-file-managed:
     #     - 'example_alt.tmpl'
     #     - 'example_alt.tmpl.jinja'
 
     # For testing purposes
     source_files:
-      TEMPLATE-config-file-file-managed:
+      wireguard-config-file-file-managed:
         - 'example.tmpl.jinja'
-      TEMPLATE-subcomponent-config-file-file-managed:
+      wireguard-subcomponent-config-file-file-managed:
         - 'subcomponent-example.tmpl.jinja'
 
   # Just for testing purposes

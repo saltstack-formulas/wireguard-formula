@@ -3,7 +3,7 @@
 # Prepare platform "finger"
 platform_finger = system.platform[:finger].split('.').first.to_s
 
-control 'TEMPLATE service' do
+control 'wireguard service' do
   impact 0.5
   title 'should be running and enabled'
 
