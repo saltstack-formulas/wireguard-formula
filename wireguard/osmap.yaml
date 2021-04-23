@@ -13,7 +13,7 @@
 # os_family: Debian
 Ubuntu:
   pkg:
-    name: wireguard-ubuntu
+    name: wireguard
   config: /etc/wireguard.d/custom-ubuntu.conf
 Raspbian: {}
 
