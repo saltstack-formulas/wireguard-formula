@@ -16,8 +16,7 @@ Debian-9: {}
 Debian-8: {}
 
 # os: Ubuntu
-Ubuntu-18.04:
-  config: /etc/wireguard.d/custom-ubuntu-18.04.conf
+Ubuntu-18.04: {}
 Ubuntu-16.04: {}
 
 # os: Fedora
