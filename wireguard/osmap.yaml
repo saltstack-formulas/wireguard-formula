@@ -14,7 +14,6 @@
 Ubuntu:
   pkg:
     name: wireguard
-#  config: /etc/wireguard.d/custom-ubuntu.conf
 Raspbian: {}
 
 # os_family: RedHat
