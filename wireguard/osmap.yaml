@@ -13,8 +13,7 @@
 # os_family: Debian
 Ubuntu:
   pkg:
-    name: wireguard-ubuntu
-  config: /etc/wireguard.d/custom-ubuntu.conf
+    name: wireguard
 Raspbian: {}
 
 # os_family: RedHat
