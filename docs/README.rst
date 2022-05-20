@@ -1,7 +1,7 @@
 .. _readme:
 
 wireguard-formula
-================
+=================
 
 |img_travis| |img_sr| |img_pc|
 
@@ -73,7 +73,7 @@ Available states
    :local:
 
 ``wireguard``
-^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 *Meta-state (This is a state that includes other states)*.
 
@@ -82,24 +82,24 @@ manages the wireguard configuration file and then
 starts the associated wireguard service.
 
 ``wireguard.package``
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 This state will install the wireguard package only.
 
 ``wireguard.config``
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 This state will configure the wireguard service and has a dependency on ``wireguard.install``
 via include list.
 
 ``wireguard.service``
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 This state will start the wireguard service and has a dependency on ``wireguard.config``
 via include list.
 
 ``wireguard.clean``
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
 *Meta-state (This is a state that includes other states)*.
 
@@ -109,18 +109,18 @@ removes the configuration file and
 then uninstalls the package.
 
 ``wireguard.service.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This state will stop the wireguard service and disable it at boot time.
 
 ``wireguard.config.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove the configuration of the wireguard service and has a
 dependency on ``wireguard.service.clean`` via include list.
 
 ``wireguard.package.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove the wireguard package and has a depency on
 ``wireguard.config.clean`` via include list.

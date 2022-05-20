@@ -24,12 +24,62 @@ Fedora-31: {}
 Fedora-30: {}
 
 # os: CentOS
-CentOS Linux-8: {}
+CentOS Linux-8:
+  service:
+    name: wg-quick
+  pkg:
+    repos:
+      epel:
+        humanname: Extra Packages for Enterprise Linux 8 - $basearch
+        mirrorlist: |-
+          https://mirrors.fedoraproject.org/metalink?repo=epel-8&arch=$basearch&
+          infra=$infra&content=$contentdir
+        enabled: 1
+        gpgcheck: 1
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+      elrepo:
+        humanname: ELRepo.org Community Enterprise Linux Repository - el8
+        mirrorlist: http://mirrors.elrepo.org/mirrors-elrepo.el8
+        enabled: 1
+        gpgcheck: 1
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org
+    pkgs:
+      wireguard-tools:
+        fromrepo: epel
+      kmod-wireguard:
+        fromrepo: elrepo
+
 CentOS Linux-7: {}
 CentOS-6:
   pkg:
     name: wireguard-centos-6
   config: /etc/wireguard.d/custom-centos-6.conf
+
+# os: Rocky
+Rocky Linux-8:
+  service:
+    name: wg-quick
+  pkg:
+    repos:
+      epel:
+        humanname: Extra Packages for Enterprise Linux 8 - $basearch
+        mirrorlist: |-
+          https://mirrors.fedoraproject.org/metalink?repo=epel-8&arch=$basearch&
+          infra=$infra&content=$contentdir
+        enabled: 1
+        gpgcheck: 1
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+      elrepo:
+        humanname: ELRepo.org Community Enterprise Linux Repository - el8
+        mirrorlist: http://mirrors.elrepo.org/mirrors-elrepo.el8
+        enabled: 1
+        gpgcheck: 1
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org
+    pkgs:
+      wireguard-tools:
+        fromrepo: epel
+      kmod-wireguard:
+        fromrepo: elrepo
 
 # os: Amazon
 Amazon Linux-2: {}

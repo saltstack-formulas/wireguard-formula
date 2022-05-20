@@ -4,6 +4,8 @@
 wireguard:
   pkg:
     name: wireguard
+    pkgs: {}
+    repos: {}
   rootgroup: root
   config: '/etc/wireguard'
   service:
