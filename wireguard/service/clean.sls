@@ -16,15 +16,21 @@ wireguard-service-clean-service-dead-{{ interface }}:
 {%- endif %}
 
 {%-  if grains['os_family'] == 'FreeBSD' %}
-wireguard-service-clean-service-dead:
-  service.dead:
+wireguard-service-clean-service-disabled:
+  service.disabled:
     - name: {{ wireguard.service.name }}
-    - sig: wireguard-go
-    - enable: False
+
+wireguard-service-clean-service-dead:
+  cmd.run:
+    - name: service {{ wireguard.service.name }} onestop
+    - onlyif: service {{ wireguard.service.name }} onestatus
+    - require:
+      - service: wireguard-service-clean-service-disabled
 
 wireguard-service-clean-sysrc-absent:
   sysrc.absent:
     - name: wireguard_interfaces
     - require:
-      - service: wireguard-service-clean-service-dead
+      - service: wireguard-service-clean-service-disabled
+      - cmd: wireguard-service-clean-service-dead
 {%- endif %}
