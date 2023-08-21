@@ -30,13 +30,25 @@ wireguard-service-running-sysrc-managed:
     - name: wireguard_interfaces
     - value: "{{ interfaces|join(' ') }}"
 
-wireguard-service-running-service-running:
-  service.running:
+wireguard-service-running-service-enabled:
+  service.enabled:
     - name: {{ wireguard.service.name }}
-    - sig: wireguard-go
-    - enable: True
     - watch:
       - sysrc: wireguard-service-running-sysrc-managed
+
+wireguard-service-running-service-running-trigger:
+  cmd.run:
+    - name: /bin/sh -c 'exit 0'
+    - unless: service {{ wireguard.service.name }} onestatus
+
+wireguard-service-running-service-running:
+  cmd.run:
+    # Close file descriptors so we don't end up with a <defuct> process
+    - name: sh -c "service {{ wireguard.service.name }} onerestart 0<&- >/dev/null 2>&1"
+    - onchanges:
+      - sysrc: wireguard-service-running-sysrc-managed
+      - service: wireguard-service-running-service-enabled
+      - cmd: wireguard-service-running-service-running-trigger
       - sls: {{ sls_config_file }}
 {%-   for interface in interfaces %}
       - file: wireguard-config-file-interface-{{ interface }}-config
