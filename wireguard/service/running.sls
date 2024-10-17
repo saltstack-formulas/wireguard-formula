@@ -17,6 +17,7 @@ wireguard-service-running-service-running-{{ interface }}:
   service.running:
     - name: {{ wireguard.service.name }}@{{ interface }}
     - enable: True
+    - reload: True
     - watch:
       - sls: {{ sls_config_file }}
       - file: wireguard-config-file-interface-{{ interface }}-config
