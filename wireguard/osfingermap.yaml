@@ -24,6 +24,9 @@ Fedora-31: {}
 Fedora-30: {}
 
 # os: CentOS
+CentOS Stream-9:
+  pkg:
+    name: wireguard-tools
 CentOS Linux-8: {}
 CentOS Linux-7: {}
 CentOS-6:
